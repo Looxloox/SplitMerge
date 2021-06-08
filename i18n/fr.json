@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alexandre Brulet"
+		]
+	},
+	"splitmerge-desc": "Outils d'édition pour scinder et fusionner les pages",
+	"action-splitmerge": "scinder ou fusionner",
+	"split-action-title": "Scinder « $1 »",
+	"split-action-tab": "Scinder",
+	"split-action-link": "Scinder la page",
+	"split-action-intro": "Veuillez sélectionner le texte à séparer dans le cadre ci-dessous:<br><br>",
+	"split-action-new-title-label": "Titre de la nouvelle page",
+	"split-action-success": "La page $1 a bien été scindée vers $2",
+	"merge-action-tab": "Fusionner",
+	"merge-action-link": "Fusionner la page"
+}

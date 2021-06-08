@@ -1,0 +1,15 @@
+#split-page-wrapper {
+  border: solid 1px;
+  padding: 10px;
+}
+
+.no-split-area {
+  cursor: pointer;
+  background-color: #dadada;
+}
+.no-split-area:hover {
+  background-color: #b7e1ff;
+}
+.no-split-area-selected {
+  background-color: #b7e1ff;
+}

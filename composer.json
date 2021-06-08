@@ -1,0 +1,24 @@
+{
+	"description": "Edit tools for splitting and merging pages",
+	"keywords": [
+		"MediaWiki",
+		"Parsoid"
+	],
+	"homepage": "https://mgwiki.univ-lyon1.fr",
+	"license": "GPL-3.0+",
+	"authors": [
+		{
+			"name": "Alexandre Brulet",
+			"homepage": "https://mgwiki.univ-lyon1.fr",
+			"role": "Original author"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/WikiValley/MGWiki/issues",
+		"source": "https://github.com/WikiValley/MGWiki"
+	},
+	"require": {
+		"php": ">=7.3.0",
+		"parsoid": ">=0.12.2"
+	}
+}

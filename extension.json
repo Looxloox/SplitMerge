@@ -1,0 +1,50 @@
+{
+	"name": "SplitMerge",
+	"version": "1.0",
+	"author": [
+		"Alexandre Brulet"
+	],
+	"url": "https://mgwiki.univ-lyon1.fr",
+	"descriptionmsg": "splitmerge-desc",
+	"license-name": "GPL-3.0+",
+	"type": "other",
+	"MessagesDirs": {
+		"SplitMerge": [
+			"i18n"
+		]
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\SplitMerge\\": "includes/"
+	},
+	"Hooks": {
+		"SkinTemplateNavigation": "MediaWiki\\Extension\\SplitMerge\\SplitMerge::onSkinTemplateNavigation",
+		"SidebarBeforeOutput": "MediaWiki\\Extension\\SplitMerge\\SplitMerge::onSidebarBeforeOutput"
+	},
+	"Actions": {
+		"split": "MediaWiki\\Extension\\SplitMerge\\SplitAction",
+		"merge": "MediaWiki\\Extension\\SplitMerge\\MergeAction"
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "SplitMerge/resources"
+	},
+	"ResourceModules": {
+		"ext.split": {
+			"scripts": [ "splitFunctions.js", "ext.split.js" ],
+			"styles": [ "ext.split.css" ],
+			"dependencies": [
+				"oojs-ui-core",
+				"oojs-ui-widgets"
+			]
+		}
+	},
+	"AvailableRights": [
+		"splitmerge"
+	],
+	"config": {
+		"SplitMergeInTabs": true,
+		"SplitMergeInToolbox": true,
+		"SplitMergeNamespaces": [ 0 ]
+	},
+	"manifest_version": 1
+}
