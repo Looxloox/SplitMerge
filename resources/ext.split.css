@@ -8,8 +8,11 @@
   background-color: #dadada;
 }
 .no-split-area:hover {
-  background-color: #b7e1ff;
+  background-color: #ff8c54;
 }
 .no-split-area-selected {
-  background-color: #b7e1ff;
+  background-color: #ff8c54;
+}
+::selection{
+    background-color:#ff8c54;
 }

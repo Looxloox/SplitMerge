@@ -25,7 +25,6 @@
    * Main function to display original text to select
    */
   function parse_html( data ) {
-//console.log(data);
     var $body = $('<div>');
     $body.html(data);
     var counter = 0;
@@ -133,13 +132,13 @@
    $('.no-split-area-selected').each( function(){
      $(this).removeClass('no-split-area-selected');
    });
-  //console.log(html);
+
    if (html){
 
      // selection out of frame
      rect = $( '#split-page-wrapper' )[0].getBoundingClientRect();
-     if ( !( coord.x >= rect.left && coord.x <= rect.right
-         && coord.y >= rect.top && coord.y <= rect.bottom ) ) {
+     if ( !( coord.x >= rect.left && coord.Endx <= rect.right
+         && coord.y >= rect.top && coord.Endy <= rect.bottom ) ) {
        alert( 'vous devez sélectionner le texte dans le cadre uniquement');
        return;
      }
@@ -149,8 +148,8 @@
        done = false;
        mw.split_tags.forEach( function( item ) {
          rect = $('#'+item.id )[0].getBoundingClientRect();
-         if ( coord.x >= rect.left && coord.x <= rect.right
-             && coord.y >= rect.top && coord.y <= rect.bottom  ) {
+         if ( coord.x >= rect.left && coord.Endx <= rect.right
+             && coord.y >= rect.top && coord.Endy <= rect.bottom  ) {
            mw.split_selection = item.origin;
            hydrate_input();
            done = true;
@@ -167,7 +166,6 @@
      removeFirst = '';
      removeLast = '';
      $test = $( html );
-      console.log( $test.first().children().length );
 
       if ( $test.first().html().length == 0 ) {
         removeFirst = $test.first().attr('data-parsoid');
@@ -193,7 +191,7 @@
       $main = $('<div id="split-main">');
       $main.html( html );
 
-      // remove first/last empty tag (any)
+      // remove first/last empty tag (any), note truncated tags
       if ( removeFirst || removeLast ) {
         $main.find('[data-parsoid]').each( function(){
           if ( ( removeFirst && $(this).attr('data-parsoid') == removeFirst )
@@ -269,7 +267,7 @@
       $selection.find('#no-split-area'+key).remove();
       $selection.find('#no-split-end'+key).remove();
     });
-alert($selection.html());
+
     // convert to wikitext
     mw.parsoid_request( {
        url : parsoidUrl + '/html/to/wikitext/',
@@ -277,8 +275,8 @@ alert($selection.html());
        dataType : 'text',
        data: { html: $selection.html() }
      } ).then ( function(data){
-       $('input[name=selected-content]').val( data );
-       alert(data);
+       //alert(data);
+       $('input[name=wpselected-content]').val( data );
      }, alert );
   }
 

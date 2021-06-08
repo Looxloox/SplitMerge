@@ -18,6 +18,7 @@
   }
 
   mw.getSelectionCoords = function() {
+    /*
       var sel = document.selection, range, rect;
       var x = 0, y = 0;
       if (sel) {
@@ -26,10 +27,15 @@
               range.collapse(true);
               x = range.boundingLeft;
               y = range.boundingTop;
+              range.collapse(false);
+              Endx = range.boundingLeft;
+              Endy = range.boundingTop;
+              type = 'sel';
           }
       } else if (window.getSelection) {
           sel = window.getSelection();
           if (sel.rangeCount) {
+              type = "window";
               range = sel.getRangeAt(0).cloneRange();
               if (range.getClientRects) {
                   range.collapse(true);
@@ -37,6 +43,12 @@
                       rect = range.getClientRects()[0];
                       x = rect.left;
                       y = rect.top;
+                  }
+                  range.collapse(false);
+                  if (range.getClientRects().length>0){
+                      rect = range.getClientRects()[0];
+                      Endx = rect.left;
+                      Endy = rect.top;
                   }
               }
               // Fall back to inserting a temporary element
@@ -55,11 +67,33 @@
 
                       // Glue any broken text nodes back together
                       spanParent.normalize();
+                      Endx = 0;
+                      Endy = 0;
                   }
               }
           }
       }
-      return { x: x, y: y };
+      */
+      var selection = window.getSelection();
+
+      var range = selection.getRangeAt(0).cloneRange();
+      var r = range.cloneRange();
+
+      range.collapse(true);
+      var dummy = document.createElement("span");
+      range.insertNode(dummy);
+      var rect = dummy.getBoundingClientRect();
+      var x = rect.left, y = rect.top;
+      dummy.parentNode.removeChild(dummy);
+
+      var dummy2 = document.createElement("span");
+      r.collapse(false); // collapses range clone to end of original range
+      r.insertNode(dummy2);
+      rect2 = dummy2.getBoundingClientRect();
+      var Endx = rect2.right, Endy = rect2.bottom;
+      dummy2.parentNode.removeChild(dummy2);
+
+      return { x: x, y: y, Endx: Endx, Endy: Endy };
   }
 
   mw.getSelectionHtml = function() {
